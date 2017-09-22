@@ -787,7 +787,7 @@
                   font-size 12px
 
     .judgediv
-      margin-top 60px
+      margin-top 0px
       .yhtitdiv
         .leftimg2
           text-align center
