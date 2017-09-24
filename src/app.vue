@@ -1,13 +1,14 @@
 <template>
   <div>
-    <div class="home">
+    <!--<div class="home">
       <ul>
         <li>
           <a href="https://wap.epet.com/main.html?pet_type=dog">
             <router-link to="/home"><img src="./components/home/main_tab_1_sel.png"></router-link>
           </a>
         </li>
-        <li ><a href="https://wap.epet.com/category.html?pet_type=dog" >
+        <li >
+          <a href="https://wap.epet.com/category.html?pet_type=dog" >
           <router-link to="/classification"><img src="./components/home/main_tab_2.png"></router-link>
         </a>
         </li>
@@ -22,7 +23,8 @@
           </a>
         </li>
       </ul>
-    </div>
+    </div>-->
+    <router-link to="/home"></router-link>
     <router-view></router-view>
   </div>
 </template>
@@ -60,5 +62,5 @@
       width 93px
       text-align center
       img
-        height 50px
+        height 40px
 </style>

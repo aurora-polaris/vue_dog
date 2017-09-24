@@ -1,6 +1,11 @@
 <template>
   <div>
     <Eheader></Eheader>
+    <!--眨眼睛的小狗-->
+    <div class="godog">
+
+    </div>
+
    <scroller>
     <div class="allmodule module">
 
@@ -78,40 +83,6 @@
 
       <split></split>
 
-      <!--<div class="surprise_day">
-        <div class="surprise">
-          <div class="surprise-tit">
-            <div class="titing">
-              <img src="./content/15.png" >
-            </div>
-            <div class="fl ft13 ml10" style="margin-top: 1px;">距本场结束</div>
-            <div class="more">
-              <a href="#" class="more_img">
-                <img src="./content/16.png" >
-              </a>
-            </div>
-          </div>
-
-          &lt;!&ndash;<div class="surprise-pro pl5 mb10">
-            <div class="swiper-container surprise-scroll swiper-container-horizontal">
-              <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-325.714px, 0px, 0px);">
-                <div class="swiper-slide" style="width: 98.5714px; margin-right: 10px;">
-                  <div class="pro-block">
-                    <a href="#" class="pro-image">
-                      <div class="thispro-img loadimg-nofixed">
-                        <img  src="./content/two-1.jpg" lazy="loaded">
-                      </div>
-                      <div class="cred ftc mt5">
-                        <span class="ft12">¥</span>
-                        <span class="ft17">17.50</span>
-                      </div>
-                      <p class="c999 ftc ft12">省￥11.50</p>
-                    </a>
-                  </div>
-                </div>
-                </div></div></div>&ndash;&gt;
-        </div>
-      </div>-->
       <surpriseItem></surpriseItem>
 
       <split></split>
@@ -508,6 +479,8 @@
       <div class="footer"></div>
     </div>
   </scroller>
+
+    <foot></foot>
   </div>
 
 </template>
@@ -515,11 +488,12 @@
   import Eheader from './header/header.vue'
   import BScroll from 'better-scroll'
   import split from './split/split.vue'
+  import foot from '../footer/footer.vue'
   import surpriseItem from './surpriseItem/surpriseItem.vue'
   import { Swipe, SwipeItem } from 'mint-ui';
     export default{
       components:{
-          Eheader,split,surpriseItem
+          Eheader,split,surpriseItem,foot
       },
       mounted(){
         this.$nextTick(()=>{
@@ -533,6 +507,21 @@
 
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
+  .godog
+    background url("./content/godog.png") no-repeat
+    width 41px
+    height 46px
+    background-size 80px auto
+    position: fixed
+    bottom 15%
+    right -1px
+    z-index 2
+    animation nnh 2.5s steps(2,end) infinite
+ /* @keyframes nnh
+     from
+       translateX 10px
+     to
+       translateX -10px*/
   .allmodule
     margin-top 140px
     .banner_item

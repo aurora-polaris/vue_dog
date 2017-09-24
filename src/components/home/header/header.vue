@@ -39,23 +39,26 @@
           </div>
 
           </div>
+
             <!--导航栏-->
         <div class="find_nav">
-
             <div class="find_nav_left ">
-
-                <div class="find_nav_list dscroll-div" ref="navbar" style="width: 120%">
+                <div class="find_nav_list dscroll-div" ref="navbar" style="width: 120%;height: 40px">
                   <ul class="dscroll-ul" style="width: 120%">
                     <li data-type="0" data-shareid="1" class="dscroll-li on" style="width: 74.5px;" >
                       <a href="#" class="descroll-a">
                         <span class="rela">
-                          <span>首页</span>
+                          <span style="color: red">首页</span>
                           <i></i>
                          </span>
                       </a> </li>
                     <li data-type="123" data-shareid="372" class="dscroll-li" style="width: 74.5px;">
                       <a href="#" class="descroll-a">
-                        <span class="rela"><span>主粮</span><i></i></span>
+                        <span class="rela">
+                          <router-link to="/header/food">
+                            <span>主粮</span>
+                          </router-link>
+                          <i></i></span>
                       </a></li>
                     <li data-type="125" data-shareid="374" class="dscroll-li" style="width: 74.5px;">
                       <a href="#" class="descroll-a">
@@ -72,12 +75,11 @@
                         <span class="rela"><span>美容香波</span><i></i></span></a></li>
                   </ul>
                 </div>
-
-
+              <router-view></router-view>
           </div>
-          </div>
-
+        </div>
       </div>
+
    </div>
 
   </div>
@@ -195,6 +197,8 @@ import BScroll from 'better-scroll'
                     height 100%
                     line-height 36px
                     text-align center
+                  .router-link-active
+                    color green
                     .rela
                       font-size 14px
                       &>span
