@@ -517,11 +517,11 @@
     right -1px
     z-index 2
     animation nnh 2.5s steps(2,end) infinite
- /* @keyframes nnh
+  @keyframes nnh
      from
-       translateX 10px
+       background-position 0 0
      to
-       translateX -10px*/
+       background-position -85px 0
   .allmodule
     margin-top 140px
     .banner_item
