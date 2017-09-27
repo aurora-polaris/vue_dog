@@ -56,9 +56,8 @@
             color #333
             &>span
               line-height 40px
-
-          .router-link-active
-            color red
+            &.router-link-active
+              color red
 
       .search
         float right

@@ -11,8 +11,8 @@
 
       <div class="banner_item">
         <!--轮播图-->
-        <mt-swipe class="mt-swipe" :auto="4000"  style="width: 375px;height: 150px;">
-          <mt-swipe-item class="mt-item">
+        <mt-swipe class="mt-swipe" :auto="4000"  style="width: 375px;height: 150px;" >
+          <mt-swipe-item class="mt-item" >
             <img src="./content/1.jpg" >
           </mt-swipe-item>
           <mt-swipe-item class="mt-item">
@@ -151,7 +151,7 @@
       <split></split>
 
       <!--品牌特卖-->
-      <div class="custom_tite">
+      <div class="custom_tite" >
         <div class="titmoudle" style="border-bottom: 0px solid">
           <a href="#" class="titimg">
             <img src="./content/pinpai.png" >
@@ -306,9 +306,15 @@
             <div class="fl" style="border-left: 1px solid">
               <img src="./content/zanzhushang.png" >
             </div>
-            <div class="ta-wrap"  ref="navbar">
-              <ul class="ta-ul" style="width: 130%">
-                <li class="ta-li">
+            <div class="ta-wrap"  ref="navbar" id="taWrap">
+              <ul class="ta-ul"  v-if="datas[37]">
+                <li class="ta-li" v-for="(ls,index) in datas[37].list">
+                  <a href="#" class="ta-a" style="width: 100px">
+                    <img :src="ls.image" >
+                    <span>{{ls.donate_money_txt}}</span>
+                  </a>
+                </li>
+               <!-- <li class="ta-li">
                   <a href="#" class="ta-a">
                     <img src="./content/epet_brand_logo.png" >
                     <span>已捐助￥18797</span>
@@ -331,13 +337,7 @@
                     <img src="./content/epet_brand_logo.png" >
                     <span>已捐助￥18797</span>
                   </a>
-                </li>
-                <li class="ta-li">
-                  <a href="#" class="ta-a">
-                    <img src="./content/epet_brand_logo.png" >
-                    <span>已捐助￥18797</span>
-                  </a>
-                </li>
+                </li>-->
               </ul>
             </div>
         </div>
@@ -360,94 +360,29 @@
           </div>
         </div>
         <div class="brands-judge pr10 pb10">
-          <ul class="clearfix">
-            <li class="f1">
+          <ul class="clearfix" v-if="datas[39]">
+            <li class="f1"  v-for="(lis,index) in datas[39].list" :key="index">
               <a href="javascript:;" class="f1-div">
                 <div class="mt10 ml10 bgf5 pb15">
                   <div class="main_img">
                     <div class="thising">
-                      <img  class="image" src="./content/f1-1.jpg" >
+                      <img  class="image" v-lazy="lis.image" style="width: 100%">
                     </div>
-                    <div class="ell">加入E宠2年2月</div>
+                    <div class="ell">{{lis.join_time}}</div>
                   </div>
                   <div class="mt5">
-                    <span class="f1">红*****ω</span>
-                    <span class=" pet-name">中华田园猫</span>
+                    <span class="f1" style="margin-top: -5px">{{lis.username}}</span>
+                    <span class=" pet-name">{{lis.pet_des}}</span>
                   </div>
                   <div class="mt5 ft13 pr5 pl5 c999 font-intro">
-                    包装完美，没有破漏的情况存在，虽说是跨境运输，
-                    但是物流的速度还是比想象中快，最主要的还是正品保证
-                    ，买得放心吃的安心
+                    {{lis.comment_content}}
                   </div>
                 </div>
               </a>
             </li>
-            <li class="f1">
-              <a href="javascript:;" class="f1-div">
-                <div class="mt10 ml10 bgf5 pb15">
-                  <div class="main_img">
-                    <div class="thising">
-                      <img  class="image" src="./content/f1-2.jpg" >
-                    </div>
-                    <div class="ell">加入E宠2年7月</div>
-                  </div>
-                  <div class="mt5">
-                    <span class="f1">自***人</span>
-                    <span class=" pet-name">萨摩耶</span>
-                  </div>
-                  <div class="mt5 ft13 pr5 pl5 c999 font-intro">
 
-                    物流挺给力，到货很快。包装也十分的棒，外面还有塑料薄膜包裹，非常好，一看就让人觉得质量绝对一级棒。客服真心不错，很耐心的给你讲解！就冲这个大大的好评，以后狗狗的东西直接来这里！ 再次祝e宠生意兴隆。
-
-                  </div>
-                </div>
-              </a>
-            </li>
           </ul>
-          <ul class="clearfix">
-            <li class="f1">
-              <a href="javascript:;" class="f1-div">
-                <div class="mt10 ml10 bgf5 pb15">
-                  <div class="main_img">
-                    <div class="thising">
-                      <img  class="image" src="./content/f1-3.jpg" >
-                    </div>
-                    <div class="ell">加入E宠3月</div>
-                  </div>
-                  <div class="mt5">
-                    <span class="f1">殳**白</span>
-                    <span class=" pet-name">哈士奇</span>
-                  </div>
-                  <div class="mt5 ft13 pr5 pl5 c999 font-intro">
 
-                    不知不觉中这已经是第16次在E宠购物了，其实我家二妹才来了三个多月。二妹吃的，用的，玩的，包括生病的药全部是在E宠买的，看中的就是正品保障和一流的物流。印象最深的是618活动的时候因为订单量太大，有一个单子没有按时送到，我联系了客服，客服保证第二天送到，结果第二天晚上十一点多的时候E宠的工作人员开着自家的小轿车把货送到了我家楼下，兑现了承诺。希望E宠以后越来越好，继续做广大铲屎官的坚实后盾。
-
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="f1">
-              <a href="javascript:;" class="f1-div">
-                <div class="mt10 ml10 bgf5 pb15">
-                  <div class="main_img">
-                    <div class="thising">
-                      <img  class="image" src="./content/f1-4.jpg" >
-                    </div>
-                    <div class="ell">加入E宠2月</div>
-                  </div>
-                  <div class="mt5">
-                    <span class="f1">奥****家</span>
-                    <span class=" pet-name">中华田园猫</span>
-                  </div>
-                  <div class="mt5 ft13 pr5 pl5 c999 font-intro">
-
-                    客服和物流都是特别的满意，以前曾经在天猫国际买，但是物流速度太慢了。e宠的速度快不说，东西绝对是真货，最重要的是，每次的减震避震都做的特别完美。开了水族站之后，以后家里宠物的东西全都e宠买了。
-
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
         </div>
 
       </div>
@@ -485,23 +420,55 @@
 
 </template>
 <script>
+  import Vue from 'vue'
   import Eheader from './header/header.vue'
   import BScroll from 'better-scroll'
   import split from './split/split.vue'
   import foot from '../footer/footer.vue'
+  import axios from 'axios'
+
   import surpriseItem from './surpriseItem/surpriseItem.vue'
   import { Swipe, SwipeItem } from 'mint-ui';
     export default{
+        data(){
+          return {
+              datas:[],
+
+          }
+        },
       components:{
           Eheader,split,surpriseItem,foot
       },
       mounted(){
-        this.$nextTick(()=>{
-          this.scroll=new BScroll(this.$refs.navbar,{
+        axios.get('/api/home')
+          .then(response=>{
+            const result=response.data
+            if(result.code===0){
+              this.datas=result.data
+//              setTimeout(()=>{
+//                  this._initScroll()
+//              },100)
+//              Vue.$nextTick(()=>{
+//                Vue._initScroll()
+//              })
+            }
+          })
+        setTimeout(() => {
+          console.log(document.getElementById('taWrap'))
+          new BScroll(document.getElementById('taWrap'), {
             click:true,
             scrollX:true
           })
-        })
+        }, 1000)
+      },
+      method:{
+        _initScroll(){
+          console.log(document.getElementById('taWrap'))
+          new BScroll(Vue.$refs.navbar, {
+            click:true,
+            scrollX:true
+          })
+        }
       }
     }
 
@@ -718,6 +685,7 @@
           text-align center
           margin-top -115px
           z-index 100
+
           .mt5
             margin-top 5px
             display block
@@ -738,29 +706,38 @@
 
       .clearfix
         .fl
-
+          margin-top 20px
           &>img
            width 60px
-           padding-top 10px
+           padding-top 20px
            float left
            z-index 2
            position: absolute
-           background-color white
+           background red
            padding-left 10px
            padding-right 10px
         .ta-wrap
+          width 100%
+          overflow: hidden
+          position: relative
           .ta-ul
+            overflow: hidden
+            position: relative
             white-space: nowrap
+            float left
             display: flex
-            margin-top 20px
+            /*margin-top 10px*/
             margin-bottom 10px
             margin-left 70px
             margin-right 100px
+            height 70px
             .ta-li
-              width 109px
-              margin-top 10px
-              border-right 1px solid #898989
-              margin-left 10px
+              display inline-block
+              width 130px
+              height 60px
+              margin-top 5px
+              border 1px solid blue
+              margin-left 20px
               .ta-a
                 display block
                 width 100%
@@ -768,11 +745,12 @@
                 font-size 12px
                 margin-right 5px
                 &>img
-                  width 100%
-                  height 100%
-                  margin-bottom 5px
+                  padding 5npmpx
+                  width 80px
+                 /* margin-bottom 5px*/
                 &>span
                   display block
+                  height 12px
                   font-size 12px
 
     .judgediv
@@ -799,14 +777,13 @@
         padding-right 10px
         .clearfix
           list-style-type: disc;
-          display: flex
+
           .f1
             float left
             display list-item
             margin-left -13px
-            -webkit-box-flex: 1;
-            flex: 1;
-            width: 0;
+            margin-top 30px
+            width: 50%;
             text-align: center;
             .f1-div
               .mt10
@@ -822,7 +799,7 @@
                     background-image url("./content/default-epet.png") no-repeat center center #f4f4f4
                     background-size 120px auto
                     position relative
-                    padding-top 100%
+
                     &>img
                       top 0
                       left 0

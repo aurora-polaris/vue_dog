@@ -12,7 +12,9 @@
          </div>
          <!--注册-->
          <div class="zhuce">
-           <a href="">注册</a>
+           <router-link to="/register">
+             <a href="" style="color:#fff">注册</a>
+           </router-link>
          </div>
          <!--尖角号-->
          <div class="personal">
@@ -27,15 +29,15 @@
          <div class="denglu">
            <ul class="per-ul clearfix">
              <router-link to="/mypet/login">
-               <li class="per-li">
+               <li class="per-li" @click="toggleShow">
                  <a href="" class="per-a">普通登录</a>
-                 <i></i>
+                 <i v-show="isShow" ></i>
                </li>
              </router-link>
              <router-link to="/mypet/phone">
-               <li class="per-li">
+               <li class="per-li" @click="toggleShow">
                  <a href="" class="per-a">手机动态密码登录</a>
-                 <!--<i></i>-->
+                 <i  v-show="!isShow" ></i>
                </li>
              </router-link>
 
@@ -47,7 +49,22 @@
 
 </template>
 <script>
-    export default{}
+    export default{
+        data(){
+            return{
+                isShow:true
+            }
+        },
+      methods:{
+        toggleShow(){
+
+              this.isShow=!this.isShow
+
+
+
+            }
+      }
+    }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
    .wrap

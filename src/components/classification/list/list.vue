@@ -1,30 +1,23 @@
 <template>
     <div class="tab1" >
       <scroller>
-        <div class="leftbox">
-
+        <div class="leftbox" ref="leftsDiv">
+        <!--  <ul>
+            &lt;!&ndash;current: 代表当前的&ndash;&gt;
+            <li class="menu-item" v-for="(category, index) in categorys"
+                 @click="clickMenuItem(index)">
+            <span class="text border-1px">
+             &lt;!&ndash; <span class="icon" v-if="good.type>=0" ></span>{{good.name}}&ndash;&gt;
+            </span>
+            </li>
+          </ul>-->
         <ul class="left-ul">
-          <li data-id="88888" class="ftc bgfff" >为您推荐</li>
-          <li data-id="5" class="ftc bgfff">狗狗主粮</li>
-          <li data-id="6" class="ftc bgfff on">狗狗零食</li>
-          <li data-id="54" class="ftc bgfff">狗狗日用</li>
-          <li data-id="53" class="ftc bgfff">狗狗玩具</li>
-          <li data-id="48" class="ftc bgfff">狗狗保健</li>
-          <li data-id="49" class="ftc bgfff">狗狗医疗</li>
-          <li data-id="55" class="ftc bgfff">狗狗服饰</li>
-          <li data-id="2652" class="ftc bgfff">狗狗牵引</li>
-          <li data-id="2651" class="ftc bgfff">狗狗美容</li>
-          <li data-id="50" class="ftc bgfff">狗狗香波</li>
-          <li data-id="3288" class="ftc bgfff">狗狗书籍</li>
-          <li data-id="3895" class="ftc bgfff">狗狗周边</li>
-          <li data-id="3886" class="ftc bgfff">狗狗定制</li>
-
+          <li data-id="88888" class="ftc bgfff" @click="clickMenuItem(index)"  :class="{current: currIndex==index}" v-for="(category,index) in categorys" :key="index">{{category.name}}</li>
         </ul>
-
       </div>
       </scroller>
 
-      <div class="rightbox">
+      <div class="rightbox" ref="rightDiv">
        <div class="rightlist">
          <ul class="clearfix">
            <li class="clearfix-li">
@@ -155,14 +148,80 @@
     </div>
 </template>
 <script>
-  import { Swipe, SwipeItem } from 'mint-ui';
+  import { Swipe, SwipeItem } from 'mint-ui'
+  import BScroll from 'better-scroll'
+  import axios from 'axios'
     export default{
+      data(){
+        return {
+          categorys:[],
+          tops:[],
+          scrollY:0
+        }
+      },
+      mounted(){
+        axios.get('/api/classification/list')
+          .then(response=>{
+            const result=response.data
+            if(result.code===0){
+              this.categorys=result.data
+             /* this.$nextTick(()=>{
+                  this._initTops()
+                  this._initScroll()
+              })*/
+            }
+          })
+        },
+      methods: {
+
+        /*  _initScroll () {
+          // 创建左侧列表对应的scroll对象
+          new BScroll(this.$refs.leftsDiv, {
+            click: true //响应点击
+          })
+          // 创建右侧列表对应的scroll对象
+          this.foodsScroller = new BScroll(this.$refs.foodsDiv, {
+            click: true, //响应点击
+            probeType: 3 // 标识分发scroll事件-->绑定scroll回调函数才会调用
+          })*/
+        // 监视foods列表的滚动
+        /*this.foodsScroller.on('scroll',  (event) => {
+            if(!this.clickMenu) {
+              this.scrollY = Math.abs(event.y)
+            }
+            // console.log(this.scrollY)
+          })
+          this.foodsScroller.on('scrollEnd', (event) => {
+            this.clickMenu = false
+            this.scrollY = Math.abs(event.y)
+          })*/
+        /* _initTops(){
+            const tops=[]
+            let top=0
+            tops.push(top)
+            const lis=this.$refs.rightDiv.getElementsByClassName('ftc')
+            Array.prototype.slice.call(lis).forEach(li=>{
+                top+=li.clientHeight
+              tops.push(top)
+            })
+            this.tops=top
+            console.log(tops)
+
+          }, */
+        clickMenuItem(index){
+          console.log(index)
+
+        }
+}
+
     }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 .tab1
+
   .leftbox
     margin-top 40px
+
     top 40px
     left 0
     bottom 0
@@ -177,6 +236,12 @@
         font-size: 13px
         text-align center
         line-height 50px
+        &.current
+          position relative
+          z-index 10
+          margin-top -1px
+          background-color red
+          font-weight 700
   .rightbox
     margin-left 75px
     background-color #fff

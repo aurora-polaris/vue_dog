@@ -2,94 +2,40 @@
     <div>
       <scroller>
       <ul>
-        <li><div class="rightbox">
+        <li v-for="bran in brand"><div class="rightbox">
           <div class="rightlist">
-            <span style="color: #999;height:20px;line-height: 20px;margin-left: 100px;">—推荐品牌—</span>
+            <span style="color: #999;height:20px;line-height: 20px;margin-left: 100px;">—{{bran.title}}—</span>
             <ul class="clearfix">
-              <li class="clearfix-li">
+              <li class="clearfix-li" v-for="text in brand[0].list">
                 <ul class="right-ul">
-                  <li class="right-li">
+                  <li class="right-li" >
                     <a href="" class="db">
                       <div class="img ">
-                        <img class="lheight image" src="./image/1.jpg" lazy="loaded" style="width: 100%">
+                        <img class="lheight image" :src="text.logo" lazy="loaded" style="width: 100%">
                       </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
+                      <p class="ftc ft12 mt10">{{text.address}}</p>
                     </a>
                   </li>
                   <li class="right-li">
-                    <a href="" class="db">
-                      <div class="img ">
-                        <img class="lheight image" src="./image/2.jpg" lazy="loaded" style="width: 100%">
-                      </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
-                    </a>
-                  </li>
+                  <a href="" class="db">
+                    <div class="img ">
+                      <img class="lheight image" :src="text.logo" lazy="loaded" style="width: 100%">
+                    </div>
+                    <p class="ftc ft12 mt10">{{text.address}}</p>
+                  </a>
+                </li>
                 </ul>
               </li>
-              <li class="clearfix-li">
-                <ul class="right-ul">
-                  <li class="right-li">
-                    <a href="" class="db">
-                      <div class="img ">
-                        <img class="lheight image" src="./image/3.jpg" lazy="loaded" style="width: 100%">
-                      </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
-                    </a>
-                  </li>
-                  <li class="right-li">
-                    <a href="" class="db">
-                      <div class="img ">
-                        <img class="lheight image" src="./image/4.jpg" lazy="loaded" style="width: 100%">
-                      </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="clearfix-li">
-                <ul class="right-ul">
-                  <li class="right-li">
-                    <a href="" class="db">
-                      <div class="img ">
-                        <img class="lheight image" src="./image/5.jpg" lazy="loaded" style="width: 100%">
-                      </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
-                    </a>
-                  </li>
-                  <li class="right-li">
-                    <a href="" class="db">
-                      <div class="img ">
-                        <img class="lheight image" src="./image/6.jpg" lazy="loaded" style="width: 100%">
-                      </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="clearfix-li">
-                <ul class="right-ul">
-                  <li class="right-li">
-                    <a href="" class="db">
-                      <div class="img ">
-                        <img class="lheight image" src="./image/7.jpg" lazy="loaded" style="width: 100%">
-                      </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
-                    </a>
-                  </li>
-                  <li class="right-li">
-                    <a href="" class="db">
-                      <div class="img ">
-                        <img class="lheight image" src="./image/8.jpg" lazy="loaded" style="width: 100%">
-                      </div>
-                      <p class="ftc ft12 mt10">SmartBones</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+
             </ul>
           </div>
         </div>
-          <split ></split></li>
+          <split ></split>
+        </li>
+
+
+
+
         <li><div class="rightbox">
           <div class="rightlist">
             <span style="color: #999;height:20px;line-height: 20px;margin-left: 100px;">—推荐品牌—</span>
@@ -449,11 +395,24 @@
 <script>
   import { Swipe, SwipeItem } from 'mint-ui';
   import split from '../split/split.vue'
-    export default{
-      components:{
-          split
-      }
+  import axios from 'axios'
+  export default{
+    mounted(){
+      axios.get('/api/classification/brand')
+        .then(response=>{
+          const result=response.data
+          if(result.code===0)
+          {
+            this.brand=result.data
+          }
+
+        })
+    },
+    components:{
+      split
     }
+  }
+
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
   .rightbox

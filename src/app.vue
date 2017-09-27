@@ -34,6 +34,7 @@
   import home from './components/home/home.vue'
   import classification from './components/classification/classification.vue'
   import mypet from './components/mypet/mypet.vue'
+  import axios from 'axios'
   import shoppingcart from './components/shoppingcart/shoppingcart.vue'
   export default {
 
@@ -46,6 +47,13 @@
       classification,
       mypet,
       shoppingcart
+    },
+    mounted(){
+     axios.get('/api/home')
+      .then(response=>{
+          const result=response.data
+          console.log('vue',result)
+      })
     }
   }
 </script>
