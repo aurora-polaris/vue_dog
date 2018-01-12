@@ -311,7 +311,7 @@
                 <li class="ta-li" v-for="(ls,index) in datas[37].list">
                   <a href="#" class="ta-a" style="width: 100px">
                     <img :src="ls.image" >
-                    <span>{{ls.donate_money_txt}}</span>
+                    <span >{{ls.donate_money_txt}}</span>
                   </a>
                 </li>
                <!-- <li class="ta-li">
@@ -713,7 +713,9 @@
            float left
            z-index 2
            position: absolute
-           background red
+           background #fff
+           left: -1px;
+           border: 1px solid #eee;
            padding-left 10px
            padding-right 10px
         .ta-wrap
@@ -736,7 +738,7 @@
               width 130px
               height 60px
               margin-top 5px
-              border 1px solid blue
+
               margin-left 20px
               .ta-a
                 display block
@@ -745,14 +747,14 @@
                 font-size 12px
                 margin-right 5px
                 &>img
-                  padding 5npmpx
-                  width 80px
-                 /* margin-bottom 5px*/
+                  width 100%
                 &>span
                   display block
                   height 12px
                   font-size 12px
-
+                  position: absolute;
+                  bottom: 0;
+                  margin-left: 15px;
     .judgediv
       margin-top 0px
       .yhtitdiv
@@ -781,7 +783,7 @@
           .f1
             float left
             display list-item
-            margin-left -13px
+            margin-left -8px
             margin-top 30px
             width: 50%;
             text-align: center;

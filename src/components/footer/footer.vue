@@ -29,4 +29,9 @@
 <script>
     export default{}
 </script>
-<style></style>
+<style>
+  .home{
+    bottom: -1px;
+    width: 120%;
+  }
+</style>

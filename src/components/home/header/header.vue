@@ -58,6 +58,7 @@
               <router-view></router-view>
           </div>
         </div>
+
       </div>
 
    </div>
@@ -67,7 +68,9 @@
 
 <script>
   import axios from 'axios'
-import BScroll from 'better-scroll'
+  import BScroll from 'better-scroll'
+  import { Navbar, TabItem } from 'mint-ui'
+
   export default {
       data(){
         return {
